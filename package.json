@@ -14,9 +14,11 @@
     "vue"
   ],
   "scripts": {
-    "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "eslint --config .eslintrc.json --ignore-path .eslintignore --fix --ext .js,.ts,.vue ."
+    "ci": "npm run lint && npm run test && npm run build",
+    "lint": "eslint --config .eslintrc.json --ignore-path .eslintignore --fix --ext .js,.ts,.vue .",
+    "serve": "vue-cli-service serve",
+    "test": "exit 0"
   },
   "dependencies": {
     "bootstrap": "^4.5.3",

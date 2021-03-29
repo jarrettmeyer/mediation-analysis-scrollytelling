@@ -4,6 +4,7 @@ import { Component, Vue } from "vue-property-decorator";
 import { config } from "@/lib/config";
 import { SourceDatum } from "@/lib/models";
 import { drawSummaryGraph } from "@/lib/actions/drawSummaryGraph";
+import { version } from "@/lib/version";
 
 @Component({
   name: "SummaryPanel",
@@ -11,6 +12,10 @@ import { drawSummaryGraph } from "@/lib/actions/drawSummaryGraph";
 export default class SummaryPanel extends Vue {
   pathToSource = config.pathToSource;
   sourceData: SourceDatum[] = [];
+
+  get version(): string {
+    return version;
+  }
 
   async fetchSource(): Promise<void> {
     const csv = await d3.csv(this.pathToSource, d3.autoType);
@@ -60,6 +65,12 @@ export default class SummaryPanel extends Vue {
           </p>
         </div>
         <div class="col-3"></div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 text-muted text-right mt-5">
+          <p>Commit SHA: {{ version }}</p>
+        </div>
       </div>
     </div>
   </div>

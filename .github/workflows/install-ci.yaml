@@ -1,0 +1,16 @@
+name: Install, CI
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  install-ci:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: install npm packages
+        run: npm install
+      - name: run CI
+        run: npm run ci
