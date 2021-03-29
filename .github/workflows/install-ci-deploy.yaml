@@ -23,6 +23,7 @@ jobs:
       - name: lint
         run: npm ci
       - name: build and deploy Docker image
+        if: ${{ github.repository_owner == 'EliLillyCo' }}
         uses: docker/build-push-action@v1
         with:
           username: ${{ secrets.LIGHT_DOCKER_USER }}
